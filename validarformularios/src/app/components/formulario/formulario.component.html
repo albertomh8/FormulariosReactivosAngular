@@ -1,0 +1,95 @@
+<div style="text-align: center;">
+  <form novalidate [formGroup]="user">
+    <div class="form-group">
+      <label>
+        <span>Nombre</span>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre del usuario"
+          formControlName="nombre"
+        />
+      </label>
+      <div
+        class="error"
+        style="color: red;"
+        *ngIf="
+          user.get('nombre').hasError('required') && user.get('nombre').touched
+        "
+      >
+        Nombre requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span>Apellidos</span>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Apellidos del usuario"
+          formControlName="apellidos"
+        />
+      </label>
+      <div
+        class="error"
+        style="color: red;"
+        *ngIf="
+          user.get('apellidos').hasError('validateApellido') &&
+          user.get('apellidos').touched
+        "
+      >
+        Apellido invalido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span>Edad</span>
+        <input
+          class="form-control"
+          type="number"
+          placeholder="Edad del usuario"
+          formControlName="edad"
+        />
+      </label>
+      <div
+        class="error"
+        style="color: red;"
+        *ngIf="
+          (user.get('edad').hasError('required') && user.get('edad').touched) ||
+          (user.get('edad').hasError('min') && user.get('edad').touched) ||
+          (user.get('edad').hasError('max') && user.get('edad').touched)
+        "
+      >
+        Edad invalida
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span>Email address</span>
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Email del usuario"
+          formControlName="email"
+        />
+      </label>
+      <div
+        class="error"
+        style="color: red;"
+        *ngIf="user.get('email').hasError('email') && user.get('email').touched"
+      >
+        Email invalido
+      </div>
+    </div>
+    <div>
+      <button type="submit" [disabled]="user.invalid" class="btn btn-success">
+        Registrar Perfil
+      </button>
+    </div>
+  </form>
+  <p>Form value: {{ user.value | json }}</p>
+  <p>Form status: {{ user.status | json }}</p>
+</div>
