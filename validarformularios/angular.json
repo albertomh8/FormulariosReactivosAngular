@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "validarformularios": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "validarformularios"
+    }
+  },
+  "defaultProject": "validarformularios",
+  "cli": {
+    "analytics": "0958fea1-d9d5-4212-8eab-82eda0c7d24d"
+  }
 }
